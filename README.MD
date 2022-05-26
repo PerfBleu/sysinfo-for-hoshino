@@ -2,6 +2,7 @@
 ## 注意事项
 - 仅在linux系统上进行过测试，不保证windows能正常使用。
 - 烂代码警告。
+- 如果不能运行，把插件所在目录名改成sysinfo
 - 感谢插图作者Mint，源地址: https://www.pixiv.net/member_illust.php?mode=medium&illust_id=82093407
 - 使用GPLv3协议
 ## 部署
