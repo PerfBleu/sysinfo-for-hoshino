@@ -7,7 +7,7 @@
 ## 部署
 - clone本仓库进入modules目录，在config/__bot__.py中添加sysinfo
 - 在系统中安装安装*screenfetch* 
-  - 例如：`# apt install screenfetch`
+  - 例如：`# apt update && apt install screenfetch`
 - 安装PIL库：
   - `pip3 install pillow`
   - 如果使用poetry，使用 `poetry add pillow`
