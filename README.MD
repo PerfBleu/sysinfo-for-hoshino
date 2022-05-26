@@ -15,3 +15,5 @@
 - 发送screenfetch
 ## TODO
 - 增加权限管理
+## 长这样
+![截图](https://github.com/PerfBleu/sysinfo-for-hoshino/raw/main/screenshot.png "截图")
