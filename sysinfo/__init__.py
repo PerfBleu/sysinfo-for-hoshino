@@ -4,7 +4,6 @@ from PIL import Image, ImageFont, ImageDraw
 from hoshino import util, R
 from hoshino import Service
 
-path = os.getcwd()
 sv = Service('sysinfo', visible= True, enable_on_default= True, bundle='sysinfo', help_='''
 显示系统信息(screenfetch)
 '''.strip())
@@ -20,22 +19,36 @@ def generate():
     for line in hmplist:
         hi_mem_proc = hi_mem_proc+line.replace(line[66:74],line[66:74]+'\n')+'\n'
 
-    image = Image.open(f'{path}/hoshino/modules/sysinfo/bg.png') # 读取图片
-    font = ImageFont.truetype(f'{path}/hoshino/modules/sysinfo/IBMPlexMono-MediumItalic.ttf',22) # 设置字体及字号
+    image = Image.open(os.path.join(os.path.dirname(__file__), "../bg.png")) # 读取图片
+    #iwidth, iheight = image.size # 获取画布高宽
+    font = ImageFont.truetype(os.path.join(os.path.dirname(__file__), "../IBMPlexMono-MediumItalic.ttf"),22) # 设置字体及字号
     draw = ImageDraw.Draw(image)
+
+    #fwidth, fheight = draw.textsize('22', font) # 获取文字高宽
     flex = 750
-    #手工调的文字位置，加个变量方便调，换图的话自己调吧（笑
     draw.text((flex+10,60), logo_text, '#f88066', font)
     draw.text((flex+490,130), info_text, '#f88066', font)
     draw.text((flex+230,560), hi_mem_proc, '#f88066', font)
-    image.save(f'{path}/hoshino/modules/sysinfo/tmp.png') # 保存图片
+    image.save(os.path.join(os.path.dirname(__file__), "../tmp.png")) # 保存图片
     return('generate success')
 
+'''
+@sv.on_prefix(('screenfetch'))
+async def sysinfo(bot, ev):
+    nfo = generate()
+    if nfo == 'generate success':
+        sv.logger.info(nfo)
+    else:
+        sv.logger.warning('图像创建失败')
+    msg = f"[CQ:image,file=file:///{path}/hoshino/modules/sysinfo/tmp.png]"
+    await bot.send(ev, msg, at_sender=True)
+'''
 @sv.on_fullmatch(('screenfetch'))
 async def sysinfo(bot, ev):
     try:
         sv.logger.info(generate())
     except:
         sv.logger.warning('图片创建失败')
-    msg = f"[CQ:image,file=file:///{path}/hoshino/modules/sysinfo/tmp.png]"
+    tmppath = os.path.join(os.path.dirname(__file__), "../tmp.png")
+    msg = f"[CQ:image,file=file:///{tmppath}]"
     await bot.send(ev, msg, at_sender=True)
