@@ -5,7 +5,7 @@
 - 感谢插图作者Mint，源地址: https://www.pixiv.net/member_illust.php?mode=medium&illust_id=82093407
 - 使用GPLv3协议
 ## 部署
-- clone本仓库进入modules目录，在config/__bot__.py中添加sysinfo
+- clone本仓库进入modules目录，在config/__bot__.py中添加sysinfo-for-hoshino
 - 在系统中安装安装*screenfetch* 
   - 例如：`# apt update && apt install screenfetch`
 - 安装PIL库：
