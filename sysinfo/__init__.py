@@ -24,7 +24,7 @@ def generate():
     font = ImageFont.truetype(f'{path}/hoshino/modules/sysinfo/IBMPlexMono-MediumItalic.ttf',22) # 设置字体及字号
     draw = ImageDraw.Draw(image)
     flex = 750
-    #手工调的文字位置，加个变量方便调，换图的画自己调吧（笑
+    #手工调的文字位置，加个变量方便调，换图的话自己调吧（笑
     draw.text((flex+10,60), logo_text, '#f88066', font)
     draw.text((flex+490,130), info_text, '#f88066', font)
     draw.text((flex+230,560), hi_mem_proc, '#f88066', font)
